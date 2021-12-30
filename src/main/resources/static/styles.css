@@ -1,0 +1,99 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #39C8FF;
+}
+
+.loginBox, .resetBox {
+    width: 400px;
+    height: 300px;
+    background: white;
+    border-radius: 16px;
+    left: 50%;
+    top: 40%;
+    margin: -150px 0 0 -200px;
+    position: absolute;
+    font-family: Helvetica, sans-serif;
+    box-sizing: border-box;
+    padding: 0 15px 15px 15px;
+}
+
+.loginBox p, .resetBox p {
+    text-align: center;
+    font-size: 32px;
+}
+
+.loginBox input[type="text"], input[type="password"] {
+    width: 300px;
+    height: 40px;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 11px;
+    border: 1px solid #E5E5E5;
+    position: relative;
+}
+
+.resetBox input[type="text"], input[type="password"] {
+    width: 300px;
+    height: 40px;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 11px;
+    border: 1px solid #E5E5E5;
+    position: relative;
+}
+
+.button {
+    width: 150px;
+    height: 35px;
+    margin-top: 8px;
+    font-size: 16px;
+    border: none;
+    border-radius: 11px;
+    background-color: #09023B;
+    color: white;
+    position: relative;
+    margin-left: 25px;
+}
+
+#resetButton {
+    margin-left: 15px;
+}
+
+.button:hover {
+    cursor: pointer;
+    color:#006DFF;
+}
+
+.resetBox {
+    width: 400px;
+    height: 360px;
+}
+
+#centeredButton {
+    left: 50%;
+    margin-left: -75px;
+}
+
+.centeredDiv {
+    width: 800px;
+    height: 300px;
+    left: 50%;
+    top: 10%;
+    margin: -50px 0 0 -400px;
+    position: absolute;
+    font-family: Helvetica, sans-serif;
+}
+
+.centeredDiv h1 {
+    text-align: center;
+    font-size: 46px;
+}
