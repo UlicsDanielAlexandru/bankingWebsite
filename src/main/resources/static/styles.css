@@ -66,6 +66,11 @@ body {
 
 #resetButton {
     margin-left: 15px;
+    appearance: button;
+    text-align: center;
+    text-decoration: none;
+    padding-top: 9px;
+    height: 26px;
 }
 
 .button:hover {
@@ -136,4 +141,86 @@ body {
     text-align: center;
     color: #16CC06;
     font-size: 1em;
+}
+
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 3%;
+    background-color: #09023B;
+    border-radius: 11px;
+    margin: 10px 5px;
+    height: 22px;
+}
+
+.navBar a {
+    font-family: Helvetica, sans-serif;
+    font-size: 16px;
+    color: #E5E5E5;
+    text-decoration: none;
+}
+
+.navLinks {
+    list-style: none;
+}
+
+.navLinks li {
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.navBar a:hover {
+    color:#006DFF;
+}
+
+.operationPanel {
+    width: calc(100vw - 10px);
+    height: 85%;
+    background: white;
+    border-radius: 16px;
+    margin: 0 5px;
+    position: absolute;
+    font-family: Helvetica, sans-serif;
+    box-sizing: border-box;
+    padding: 25px 25px 25px 25px;
+}
+
+.welcomeMessagePanel {
+    font-size: 66px;
+    position: relative;
+    width: 800px;
+    top: 25%;
+    left: 50%;
+    margin: 0 0 0 -400px;
+    text-align: center;
+}
+
+.registrationForm input[type="text"] {
+    width: 300px;
+    height: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+
+    border-radius: 11px;
+    border: 1px solid #E5E5E5;
+    position: relative;
+}
+
+.registrationField {
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+    height: 60px;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.registrationField label {
+    margin-top: -12px;
+}
+
+#registrationButton {
+    margin-top: 20px;
+    margin-left: 10px;
 }

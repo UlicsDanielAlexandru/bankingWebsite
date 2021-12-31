@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -19,13 +19,11 @@
         <input type="text" name="username" placeholder="Nume utilizator">
         <input type="password" name="password" placeholder="Parolă">
         <div class="form-actions">
-            <button type="submit" class="button">Autentificare</button>
-            <button onclick="location.href='resetPassword'" type="button" class="button"
-                    id="resetButton">
-                Schimbare parolă</button>
+            <button type="submit" class="button" name="submit">Autentificare</button>
+            <a href="/resetPassword" class="button" id="resetButton"> Resetare parolă</a>
         </div>
-
     </form>
+
 </div>
 </body>
 </html>
