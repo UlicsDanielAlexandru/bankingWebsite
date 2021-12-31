@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 @AllArgsConstructor
@@ -21,6 +22,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private UserService userService;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private AuthenticationSuccessHandler successHandler;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -37,6 +39,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
+                .successHandler(successHandler)
                 .permitAll();
     }
 

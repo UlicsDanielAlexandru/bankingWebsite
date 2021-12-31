@@ -97,3 +97,43 @@ body {
     text-align: center;
     font-size: 46px;
 }
+
+.errorBox {
+    width: 350px;
+    height: 50px;
+    background: #EE8F86;
+    border-radius: 16px;
+    left: 50%;
+    top: 80%;
+    margin: 90px 0 0 -175px;
+    position: absolute;
+    font-family: Helvetica, sans-serif;
+    box-sizing: border-box;
+    padding: 0 15px 15px 15px;
+}
+
+.errorBox p {
+    text-align: center;
+    color: #E21D0B;
+    font-size: 1em;
+}
+
+.logoutBox {
+    width: 350px;
+    height: 50px;
+    background: #87F67D;
+    border-radius: 16px;
+    left: 50%;
+    top: 80%;
+    margin: 90px 0 0 -175px;
+    position: absolute;
+    font-family: Helvetica, sans-serif;
+    box-sizing: border-box;
+    padding: 0 15px 15px 15px;
+}
+
+.logoutBox p {
+    text-align: center;
+    color: #16CC06;
+    font-size: 1em;
+}

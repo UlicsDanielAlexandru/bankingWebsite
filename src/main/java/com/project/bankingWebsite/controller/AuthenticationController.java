@@ -12,12 +12,18 @@ public class AuthenticationController {
     }
 
     @GetMapping("/resetPassword")
-    public String no() {
+    public String resetPassword() {
         return "resetPassword";
     }
 
     @GetMapping("/accessDenied")
     public String getAccessDenied() {
         return "accessDenied";
+    }
+
+    @GetMapping("/admin")
+    public String goAdmin()
+    {
+        return "admin";
     }
 }

@@ -10,11 +10,11 @@
 <div class="loginBox">
     <p> Login</p>
     <form th:action="@{/login}" method="post">
-        <div th:if="${param.error}" class="alert alert-error">
-            Nume de utilizator sau parolă invalidă!
+        <div th:if="${param.error}" class="errorBox">
+            <p> Nume de utilizator sau parolă invalidă! </p>
         </div>
-        <div th:if="${param.logout}" class="alert alert-success">
-            Deconectare cu succes!
+        <div th:if="${param.logout}" class="logoutBox">
+            <p> Deconectare cu succes! </p>
         </div>
         <input type="text" name="username" placeholder="Nume utilizator">
         <input type="password" name="password" placeholder="Parolă">
