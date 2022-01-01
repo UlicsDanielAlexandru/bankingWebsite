@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Entity
-public class Transactions {
+public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,7 +27,7 @@ public class Transactions {
     private double sum;
     private LocalDateTime date;
 
-    public Transactions(Account accountFrom, Account accountTo, double sum, LocalDateTime date) {
+    public Transaction(Account accountFrom, Account accountTo, double sum, LocalDateTime date) {
         this.accountFrom = accountFrom;
         this.accountTo = accountTo;
         this.sum = sum;

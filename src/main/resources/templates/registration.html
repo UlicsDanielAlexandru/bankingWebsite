@@ -9,7 +9,7 @@
 </head>
 <body>
 <header class="navBar">
-    <img class="logo" th:src="@{/logo.png}" alt="logo">
+    <img th:src="@{/logo.png}" alt="logo">
     <nav>
         <ul class="navLinks">
             <li><a href="/admin/registration">Clienți noi</a></li>
@@ -20,39 +20,39 @@
     <a href="#"><i class="fas fa-door-open fa-2x"></i></a>
 </header>
 <div class="operationPanel">
-    <form class="registrationForm" th:action="@{/admin/registration}" th:object="${registrationRequest}" method="post">
+    <form class="generalForm" th:action="@{/admin/registration}" th:object="${registrationRequest}" method="post">
         <div th:if="${error != null}" class="errorBox">
             <p th:text="${error}"></p>
         </div>
-        <div class="registrationField">
+        <div class="flexField">
             <label>Nume utilizator:</label>
             <input type="text" name="username" th:field="*{username}" >
         </div>
-        <div class="registrationField">
+        <div class="flexField">
             <label>Parolă:</label>
             <input type="text" name="password" th:field="*{password}">
         </div>
-        <div class="registrationField">
+        <div class="flexField">
             <label>Nume:</label>
             <input type="text" name="lastName" th:field="*{lastName}" >
         </div>
-        <div class="registrationField">
+        <div class="flexField">
             <label>Prenume:</label>
             <input type="text" name="firstName" th:field="*{firstName}" >
         </div>
-        <div class="registrationField">
+        <div class="flexField">
             <label>CNP:</label>
             <input type="text" name="CNP" th:field="*{CNP}" >
         </div>
-        <div class="registrationField">
+        <div class="flexField">
             <label>Adresă:</label>
             <input type="text" name="address" th:field="*{address}" >
         </div>
-        <div class="registrationField">
+        <div class="flexField">
             <label>Email:</label>
             <input type="text" name="email" th:field="*{email}" >
         </div>
-        <div class="registrationField">
+        <div class="flexField">
             <label>Număr de telefon:</label>
             <input type="text" name="phoneNumber" th:field="*{phoneNumber}" >
         </div>

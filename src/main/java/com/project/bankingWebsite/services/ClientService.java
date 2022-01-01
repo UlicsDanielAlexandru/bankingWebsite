@@ -16,4 +16,9 @@ public class ClientService {
     {
         clientRepository.save(client);
     }
+
+    public Client loadClient(User user)
+    {
+        return clientRepository.findByUser(user);
+    }
 }

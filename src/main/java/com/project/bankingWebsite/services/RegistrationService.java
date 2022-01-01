@@ -22,7 +22,7 @@ public class RegistrationService {
         Client client = new Client(request.getCNP(), request.getFirstName(), request.getLastName(),
                 request.getAddress(),request.getEmail(),request.getPhoneNumber(),user);
         clientService.register(client);
-        Account account = new Account("a", 0, client);
+        Account account = new Account(IBANGenerator.generateIBAN(), 0, client);
         accountService.register(account);
     }
 }
