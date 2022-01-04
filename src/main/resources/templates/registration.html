@@ -21,9 +21,6 @@
 </header>
 <div class="operationPanel">
     <form class="generalForm" th:action="@{/admin/registration}" th:object="${registrationRequest}" method="post">
-        <div th:if="${error != null}" class="errorBox">
-            <p th:text="${error}"></p>
-        </div>
         <div class="flexField">
             <label>Nume utilizator:</label>
             <input type="text" name="username" th:field="*{username}" >
@@ -57,6 +54,9 @@
             <input type="text" name="phoneNumber" th:field="*{phoneNumber}" >
         </div>
         <button type="submit" class="button" id="registrationButton">Înregistrare client</button>
+        <div th:if="${error != null}" class="errorBox" id="upperErrorBox">
+            <p th:text="${error}"></p>
+        </div>
     </form>
 </div>
 </body>

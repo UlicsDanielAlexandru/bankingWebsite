@@ -4,6 +4,7 @@ import com.project.bankingWebsite.model.Client;
 import com.project.bankingWebsite.model.User;
 import com.project.bankingWebsite.services.AccountService;
 import com.project.bankingWebsite.services.ClientService;
+import com.project.bankingWebsite.services.TransactionService;
 import com.project.bankingWebsite.services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -19,6 +20,7 @@ public class VisualizerController {
     private ClientService clientService;
     private UserService userService;
     private AccountService accountService;
+    private TransactionService transactionService;
 
     @GetMapping("/client/accountInfo")
     public String visualizeAccountInfo(@AuthenticationPrincipal UserDetails userDetails, Model model)
@@ -27,5 +29,12 @@ public class VisualizerController {
         Client client = clientService.loadClient(user);
         model.addAttribute("account", accountService.loadAccount(client));
         return "accountInfo";
+    }
+
+    @GetMapping("/client/viewTransactions")
+    public String visualizeTransactions(@AuthenticationPrincipal UserDetails userDetails, Model model)
+    {
+        model.addAttribute("transactions", transactionService.loadAllTransactions());
+        return "viewTransactions";
     }
 }

@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -19,5 +20,12 @@ public class TransactionService {
         Transaction transaction = new Transaction(accountFrom, accountTo, amount, LocalDateTime.now());
         transactionRepository.save(transaction);
     }
+
+    public List<Transaction> loadAllTransactions()
+    {
+        return transactionRepository.findAll();
+    }
+
+
 
 }

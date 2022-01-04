@@ -58,10 +58,20 @@ public class ModifierController {
                                   @ModelAttribute("transactionRequest") TransactionRequest transactionRequest,
                                   Model model)
     {
+        Account accountTo;
+        try
+        {
+             accountTo = accountService.loadAccount(transactionRequest.getReceiverType(),
+                    transactionRequest.getReceiver());
+        }
+        catch (IllegalArgumentException e)
+        {
+            model.addAttribute("error",e.getMessage());
+            return "makeTransaction";
+        }
         User user = (User) userService.loadUserByUsername(userDetails.getUsername());
         Client client = clientService.loadClient(user);
         Account accountFrom = accountService.loadAccount(client);
-        Account accountTo = accountService.loadAccount(transactionRequest.getReceiver());
         accountFrom.setBalance(accountFrom.getBalance() - transactionRequest.getAmount());
         accountTo.setBalance(accountTo.getBalance() + transactionRequest.getAmount());
         transactionService.makeTransaction(accountFrom, accountTo,

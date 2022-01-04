@@ -14,7 +14,7 @@
         <ul class="navLinks">
             <li><a href="/client/accountInfo">Vizualizare cont</a></li>
             <li><a href="/client/makeTransaction">Realizare tranzacții</a></li>
-            <li><a href="#">Vizualizare tranzacții</a></li>
+            <li><a href="/client/viewTransactions">Vizualizare tranzacții</a></li>
         </ul>
     </nav>
     <a href="#"><i class="fas fa-door-open fa-2x"></i></a>
@@ -22,7 +22,11 @@
 <div class="operationPanel">
     <form class="generalForm" th:action="@{/client/makeTransaction}" th:object="${transactionRequest}" method="post">
         <div class="flexField">
-            <label>IBAN:</label>
+            <select class="comboBox" th:field="*{receiverType}">
+                <option value="IBAN">IBAN:</option>
+                <option value="PhoneNumber">Număr de telefon</option>
+            </select>
+            <label class="arrow">></label>
             <input type="text" name="receiver" th:field="*{receiver}">
         </div>
         <div class="flexField">
@@ -30,6 +34,9 @@
             <input type="text" name="amount" th:field="*{amount}">
         </div>
         <button type="submit" class="button" id="transactionButton" >Realizare tranzacție</button>
+        <div th:if="${error != null}" class="errorBox" id="upperErrorBox">
+            <p th:text="${error}"></p>
+        </div>
     </form>
 </div>
 </body>

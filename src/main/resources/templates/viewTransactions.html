@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ViewTransactions</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+    <script src="https://kit.fontawesome.com/cdd8dae3e7.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="navBar">
+    <img th:src="@{/logo.png}" alt="logo">
+    <nav>
+        <ul class="navLinks">
+            <li><a href="/client/accountInfo">Vizualizare cont</a></li>
+            <li><a href="/client/makeTransaction">Realizare tranzacții</a></li>
+            <li><a href="/client/viewTransactions">Vizualizare tranzacții</a></li>
+        </ul>
+    </nav>
+    <a href="#"><i class="fas fa-door-open fa-2x"></i></a>
+</header>
+<div class="operationPanel">
+    <div class="generalForm">
+        <div class="tableContainer">
+            <table class="table">
+                <tr>
+                    <th>Număr tranzacție</th>
+                    <th>Sumă</th>
+                    <th>IBAN cont beneficiar</th>
+                    <th>Nume Beneficiar</th>
+                    <th>Data</th>
+                </tr>
+                <tr th:each="transaction : ${transactions}">
+                    <td th:text="${transaction.id}"></td>
+                    <td th:text="${transaction.sum}"></td>
+                    <td th:text="${transaction.accountTo.IBAN}"></td>
+                    <td th:text="${transaction.accountTo.client.lastName} + ' '
+                    + ${transaction.accountTo.client.firstName}"></td>
+                    <td th:text="${transaction.date}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 public class AccountService {
 
     private AccountRepository accountRepository;
+    private ClientService clientService;
 
     public void register(Account account)
     {
@@ -23,9 +24,22 @@ public class AccountService {
         return accountRepository.findByClient(client);
     }
 
-    public Account loadAccount(String IBAN)
+    public Account loadAccount(String receiverType, String receiver) throws IllegalArgumentException
     {
-        return accountRepository.findByIBAN(IBAN);
+        Account account;
+        if(receiverType.equals("IBAN"))
+            account = accountRepository.findByIBAN(receiver);
+        else
+        {
+            Client client = clientService.loadClient(receiver);
+            if(client == null)
+                throw new IllegalArgumentException("Contul beneficiarului nu a fost identificat!");
+            account = accountRepository.findByClient(client);
+        }
+        if(account == null)
+            throw new IllegalArgumentException("Contul beneficiarului nu a fost identificat!");
+        else
+            return account;
     }
 
     public void updateAccount(Account account)

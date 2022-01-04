@@ -21,4 +21,9 @@ public class ClientService {
     {
         return clientRepository.findByUser(user);
     }
+
+    public Client loadClient(String phoneNumber)
+    {
+        return clientRepository.findByPhoneNumber(phoneNumber);
+    }
 }

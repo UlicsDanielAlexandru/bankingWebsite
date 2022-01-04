@@ -13,9 +13,9 @@ body {
     top: 40%;
     margin: -150px 0 0 -200px;
     position: absolute;
-    font-family: Helvetica, sans-serif;
     box-sizing: border-box;
     padding: 0 15px 15px 15px;
+    font-family: Helvetica, sans-serif;
 }
 
 .loginBox p, .resetBox p {
@@ -235,4 +235,64 @@ body {
     margin-top: 20px;
     margin-left: 10px;
     width: 180px;
+}
+
+#upperErrorBox {
+    margin-top: 55px;
+}
+
+.comboBox {
+    padding:3px;
+    margin: 0;
+    border-radius:11px;
+    background: white;
+    color:black;
+    border: 1px solid #E5E5E5;
+    font-size: 1em;
+    outline:none;
+    display: inline-block;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    cursor:pointer;
+    width: 170px;
+}
+
+.arrow {
+    margin-left: -160px;
+    margin-bottom: -10px;
+    transform: rotate(90deg);
+}
+
+.tableContainer {
+    height: 400px;
+    overflow-y: auto;
+    border: 1px solid #E5E5E5;
+    width: 1100px;
+
+}
+
+.table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+.table th, td {
+    text-align: left;
+}
+
+.table tr {
+    height: 28px;
+}
+
+.table td {
+    border-top: 1px solid #E5E5E5;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.table th {
+    background-color: #09023B;
+    position: sticky;
+    color: #E5E5E5;
+    font-weight: normal;
 }

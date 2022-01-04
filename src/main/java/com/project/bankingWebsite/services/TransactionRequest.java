@@ -10,6 +10,7 @@ import lombok.*;
 @ToString
 public class TransactionRequest {
 
+    private String receiverType;
     private String receiver;
     private Double amount;
 
