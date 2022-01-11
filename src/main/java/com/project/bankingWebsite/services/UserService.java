@@ -34,4 +34,16 @@ public class UserService implements UserDetailsService {
         userRepository.save(user);
     }
 
+    public void updateUser(User user)
+    {
+        String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
+        userRepository.save(user);
+    }
+
+    public void deleteClient(String username)
+    {
+        userRepository.deleteByUsername(username);
+    }
+
 }

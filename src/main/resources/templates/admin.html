@@ -13,11 +13,11 @@
     <nav>
         <ul class="navLinks">
             <li><a href="/admin/registration">Clienți noi</a></li>
-            <li><a href="#">Clienți vechi</a></li>
-            <li><a href="#">Vizualizare tranzacții</a></li>
+            <li><a href="/admin/viewClients">Clienți vechi</a></li>
+            <li><a href="/admin/viewAllTransactions">Vizualizare tranzacții</a></li>
         </ul>
     </nav>
-    <a href="#"><i class="fas fa-door-open fa-2x"></i></a>
+    <a href="#" th:href="@{/logout}"><i class="fas fa-door-open fa-2x"></i></a>
 </header>
 <div class="operationPanel">
     <div class="welcomeMessagePanel">

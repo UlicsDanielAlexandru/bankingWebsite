@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Clients</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+    <script src="https://kit.fontawesome.com/cdd8dae3e7.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="navBar">
+    <img th:src="@{/logo.png}" alt="logo">
+    <nav>
+        <ul class="navLinks">
+            <li><a href="/admin/registration">Clienți noi</a></li>
+            <li><a href="/admin/viewClients">Clienți vechi</a></li>
+            <li><a href="/admin/viewAllTransactions">Vizualizare tranzacții</a></li>
+        </ul>
+    </nav>
+    <a href="#" th:href="@{/logout}"><i class="fas fa-door-open fa-2x"></i></a>
+</header>
+<div class="operationPanel">
+    <div class="flexContainer">
+        <form class="generalForm" th:action="@{/admin/viewClients}" th:object="${client}" method="post">
+            <div class="flexField">
+                <label>Numele utilizatorului de modificat:</label>
+                <input type="text" name="username" th:field="*{user.username}">
+            </div>
+            <div class="flexField">
+                <label>Nume:</label>
+                <input type="text" name="lastName" th:field="*{lastName}">
+            </div>
+            <div class="flexField">
+                <label>Prenume:</label>
+                <input type="text" name="firstName" th:field="*{firstName}">
+            </div>
+            <div class="flexField">
+                <label>CNP:</label>
+                <input type="text" name="CNP" th:field="*{CNP}">
+            </div>
+            <div class="flexField">
+                <label>Adresă:</label>
+                <input type="text" name="address" th:field="*{address}">
+            </div>
+            <div class="flexField">
+                <label>Email:</label>
+                <input type="text" name="email" th:field="*{email}">
+            </div>
+            <div class="flexField">
+                <label>Număr de telefon:</label>
+                <input type="text" name="phoneNumber" th:field="*{phoneNumber}">
+            </div>
+            <button type="submit" class="button" id="registrationButton">Modificare client</button>
+            <div th:if="${error != null}" class="errorBox" id="upperErrorBox">
+                <p th:text="${error}"></p>
+            </div>
+        </form>
+        <div class="tableContainer" id="marginLeft">
+            <table class="table">
+                <tr>
+                    <th>Nume utlizator</th>
+                    <th>Nume</th>
+                    <th>Prenume</th>
+                    <th>CNP</th>
+                    <th>Adresă</th>
+                    <th>Email</th>
+                    <th>Număr de telefon</th>
+                </tr>
+                <tr th:each="client : ${clients}">
+                    <td th:text="${client.user.username}"></td>
+                    <td th:text="${client.lastName}"></td>
+                    <td th:text="${client.firstName}"></td>
+                    <td th:text="${client.CNP}"></td>
+                    <td th:text="${client.address}"></td>
+                    <td th:text="${client.email}"></td>
+                    <td th:text="${client.phoneNumber}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

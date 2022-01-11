@@ -17,29 +17,43 @@
             <li><a href="/client/viewTransactions">Vizualizare tranzacții</a></li>
         </ul>
     </nav>
-    <a href="#"><i class="fas fa-door-open fa-2x"></i></a>
+    <div>
+        <a href="/client/clientInfo"><i class="fas fa-user fa-2x" id="clientInfoButton"></i></a>
+        <a href="#" th:href="@{/logout}"><i class="fas fa-door-open fa-2x"></i></a>
+    </div>
 </header>
 <div class="operationPanel">
     <div class="generalForm">
-        <div class="tableContainer">
-            <table class="table">
+        <div class="tableContainer" th:if="${message == null}">
+            <table class="table" >
                 <tr>
                     <th>Număr tranzacție</th>
                     <th>Sumă</th>
-                    <th>IBAN cont beneficiar</th>
-                    <th>Nume Beneficiar</th>
+                    <th>IBAN cont</th>
+                    <th>Deținător cont</th>
                     <th>Data</th>
                 </tr>
                 <tr th:each="transaction : ${transactions}">
                     <td th:text="${transaction.id}"></td>
-                    <td th:text="${transaction.sum}"></td>
-                    <td th:text="${transaction.accountTo.IBAN}"></td>
+                    <td th:text="${transaction.sum * -1}" th:if="${transaction.accountFrom.
+                    client.id == clientId}"></td>
+                    <td th:text="${transaction.accountTo.IBAN}" th:if="${transaction.accountFrom.
+                    client.id == clientId}"></td>
                     <td th:text="${transaction.accountTo.client.lastName} + ' '
-                    + ${transaction.accountTo.client.firstName}"></td>
+                    + ${transaction.accountTo.client.firstName}" th:if="${transaction.accountFrom.
+                    client.id == clientId}"></td>
+                    <td th:text="${transaction.sum}" th:if="${transaction.accountTo.
+                    client.id == clientId}"></td>
+                    <td th:text="${transaction.accountFrom.IBAN}" th:if="${transaction.accountTo.
+                    client.id == clientId}"></td>
+                    <td th:text="${transaction.accountFrom.client.lastName} + ' '
+                    + ${transaction.accountFrom.client.firstName}" th:if="${transaction.accountTo.
+                    client.id == clientId}"></td>
                     <td th:text="${transaction.date}"></td>
                 </tr>
             </table>
         </div>
+        <p th:if="${message != null}" th:text="${message}"></p>
     </div>
 </div>
 </body>

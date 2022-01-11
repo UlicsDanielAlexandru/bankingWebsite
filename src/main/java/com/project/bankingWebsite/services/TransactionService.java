@@ -23,9 +23,19 @@ public class TransactionService {
 
     public List<Transaction> loadAllTransactions()
     {
-        return transactionRepository.findAll();
+        List<Transaction> transactions = transactionRepository.findAll();
+        transactions.sort((x, y) -> y.getDate().compareTo(x.getDate()));
+        return transactions;
     }
 
+    public List<Transaction> loadTransactions(Account account)
+    {
+        List<Transaction> transactionsTo = transactionRepository.findByAccountTo(account);
+        List<Transaction> transactionsFrom = transactionRepository.findByAccountFrom(account);
+        transactionsTo.addAll(transactionsFrom);
+        transactionsTo.sort((x, y) -> y.getDate().compareTo(x.getDate()));
+        return transactionsTo;
+    }
 
 
 }

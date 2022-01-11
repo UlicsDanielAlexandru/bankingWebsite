@@ -126,7 +126,7 @@ body {
 .logoutBox {
     width: 350px;
     height: 50px;
-    background: #87F67D;
+    background: #CCFFC7;
     border-radius: 16px;
     left: 50%;
     top: 80%;
@@ -295,4 +295,16 @@ body {
     position: sticky;
     color: #E5E5E5;
     font-weight: normal;
+}
+
+#clientInfoButton {
+    margin-right: 15px;
+}
+
+.flexContainer {
+    display: flex;
+}
+
+#marginLeft {
+    margin-left : 15px;
 }

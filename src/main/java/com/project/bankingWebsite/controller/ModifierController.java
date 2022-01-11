@@ -7,6 +7,7 @@ import com.project.bankingWebsite.services.*;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -37,13 +38,12 @@ public class ModifierController {
         try
         {
             registrationService.register(registrationRequest);
-            return "registration";
         }
         catch (IllegalStateException e)
         {
             model.addAttribute("error",e.getMessage());
-            return "registration";
         }
+        return "registration";
     }
 
     @GetMapping("/client/makeTransaction")
@@ -75,12 +75,43 @@ public class ModifierController {
         accountFrom.setBalance(accountFrom.getBalance() - transactionRequest.getAmount());
         accountTo.setBalance(accountTo.getBalance() + transactionRequest.getAmount());
         transactionService.makeTransaction(accountFrom, accountTo,
-                transactionRequest.getAmount() * -1);
-        transactionService.makeTransaction(accountTo, accountFrom,
                 transactionRequest.getAmount());
         accountService.updateAccount(accountFrom);
         accountService.updateAccount(accountTo);
         return "makeTransaction";
+    }
+
+    @PostMapping("/admin/viewClients")
+    public String modifyClient(@ModelAttribute("client") Client client, Model model)
+    {
+        User user;
+        try
+        {
+            user = (User) userService.loadUserByUsername(client.getUser().getUsername());
+        }
+        catch (UsernameNotFoundException e)
+        {
+            model.addAttribute("error","Utilizatorul cu numele" +
+                    client.getUser().getUsername() + "nu a fost găsit!");
+            model.addAttribute("clients", clientService.loadAllClients());
+            return "viewClients";
+        }
+        Client editClient = clientService.loadClient(user);
+        if(!client.getLastName().equals(""))
+            editClient.setLastName(client.getLastName());
+        if(!client.getFirstName().equals(""))
+            editClient.setFirstName(client.getFirstName());
+        if(!client.getCNP().equals(""))
+            editClient.setCNP(client.getCNP());
+        if(!client.getAddress().equals(""))
+            editClient.setAddress(client.getAddress());
+        if(!client.getEmail().equals(""))
+            editClient.setEmail(client.getEmail());
+        if(!client.getPhoneNumber().equals(""))
+            editClient.setPhoneNumber(client.getPhoneNumber());
+        clientService.updateClient(editClient);
+        model.addAttribute("clients", clientService.loadAllClients());
+        return "viewClients";
     }
 
 }

@@ -6,6 +6,8 @@ import com.project.bankingWebsite.repositories.ClientRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class ClientService {
@@ -26,4 +28,19 @@ public class ClientService {
     {
         return clientRepository.findByPhoneNumber(phoneNumber);
     }
+
+    public Client loadClientByCNP(String CNP)
+    {
+        return clientRepository.findByCNP(CNP);
+    }
+
+    public List<Client> loadAllClients()
+    {
+        return clientRepository.findAll();
+    }
+
+    public void updateClient(Client client) {
+        clientRepository.save(client);
+    }
+
 }
