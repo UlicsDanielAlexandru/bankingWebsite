@@ -41,7 +41,7 @@ public class UserService implements UserDetailsService {
         userRepository.save(user);
     }
 
-    public void deleteClient(String username)
+    public void deleteUser(String username)
     {
         userRepository.deleteByUsername(username);
     }

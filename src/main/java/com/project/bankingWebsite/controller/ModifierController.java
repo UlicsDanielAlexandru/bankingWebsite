@@ -82,7 +82,8 @@ public class ModifierController {
     }
 
     @PostMapping("/admin/viewClients")
-    public String modifyClient(@ModelAttribute("client") Client client, Model model)
+    public String modifyClient(@ModelAttribute("client") Client client, @ModelAttribute("action") String action,
+                               Model model)
     {
         User user;
         try
@@ -96,20 +97,32 @@ public class ModifierController {
             model.addAttribute("clients", clientService.loadAllClients());
             return "viewClients";
         }
-        Client editClient = clientService.loadClient(user);
-        if(!client.getLastName().equals(""))
-            editClient.setLastName(client.getLastName());
-        if(!client.getFirstName().equals(""))
-            editClient.setFirstName(client.getFirstName());
-        if(!client.getCNP().equals(""))
-            editClient.setCNP(client.getCNP());
-        if(!client.getAddress().equals(""))
-            editClient.setAddress(client.getAddress());
-        if(!client.getEmail().equals(""))
-            editClient.setEmail(client.getEmail());
-        if(!client.getPhoneNumber().equals(""))
-            editClient.setPhoneNumber(client.getPhoneNumber());
-        clientService.updateClient(editClient);
+        if(action.equals("modify")) {
+            Client editClient = clientService.loadClient(user);
+            if (!client.getLastName().equals(""))
+                editClient.setLastName(client.getLastName());
+            if (!client.getFirstName().equals(""))
+                editClient.setFirstName(client.getFirstName());
+            if (!client.getCNP().equals(""))
+                editClient.setCNP(client.getCNP());
+            if (!client.getAddress().equals(""))
+                editClient.setAddress(client.getAddress());
+            if (!client.getEmail().equals(""))
+                editClient.setEmail(client.getEmail());
+            if (!client.getPhoneNumber().equals(""))
+                editClient.setPhoneNumber(client.getPhoneNumber());
+            clientService.updateClient(editClient);
+        }
+        else
+        {
+            Client toBeDeletedClient = clientService.loadClient(user);
+            Account toBeDeletedAccount = accountService.loadAccount(toBeDeletedClient);
+            transactionService.deleteTransactionByAccountFrom(toBeDeletedAccount);
+            transactionService.deleteTransactionByAccountTo(toBeDeletedAccount);
+            accountService.deleteAccount(toBeDeletedAccount);
+            clientService.deleteClient(toBeDeletedClient);
+            userService.deleteUser(user.getUsername());
+        }
         model.addAttribute("clients", clientService.loadAllClients());
         return "viewClients";
     }

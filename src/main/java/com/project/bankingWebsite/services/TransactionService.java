@@ -37,5 +37,15 @@ public class TransactionService {
         return transactionsTo;
     }
 
+    public void deleteTransactionByAccountTo(Account account)
+    {
+        transactionRepository.deleteByAccountTo(account);
+    }
+
+    public void deleteTransactionByAccountFrom(Account account)
+    {
+        transactionRepository.deleteByAccountFrom(account);
+    }
+
 
 }

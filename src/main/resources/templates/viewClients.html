@@ -50,7 +50,9 @@
                 <label>Număr de telefon:</label>
                 <input type="text" name="phoneNumber" th:field="*{phoneNumber}">
             </div>
-            <button type="submit" class="button" id="registrationButton">Modificare client</button>
+            <button type="submit" class="button" id="registrationButton" th:name="action" th:value="modify"
+            >Modificare client</button>
+            <button type="submit" class="button" th:name="action" th:value="delete">Ștegere client</button>
             <div th:if="${error != null}" class="errorBox" id="upperErrorBox">
                 <p th:text="${error}"></p>
             </div>

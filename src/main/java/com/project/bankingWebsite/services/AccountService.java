@@ -46,4 +46,9 @@ public class AccountService {
     {
         accountRepository.save(account);
     }
+
+    public void deleteAccount(Account account)
+    {
+        accountRepository.delete(account);
+    }
 }

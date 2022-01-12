@@ -43,4 +43,9 @@ public class ClientService {
         clientRepository.save(client);
     }
 
+    public void deleteClient(Client client)
+    {
+        clientRepository.delete(client);
+    }
+
 }

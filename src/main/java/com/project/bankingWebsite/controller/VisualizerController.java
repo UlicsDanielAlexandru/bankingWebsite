@@ -72,6 +72,7 @@ public class VisualizerController {
     @GetMapping("/admin/viewClients")
     public String visualizeClients(Model model)
     {
+        model.addAttribute("action", "");
         model.addAttribute("clients", clientService.loadAllClients());
         model.addAttribute("client", new Client());
         return "viewClients";
